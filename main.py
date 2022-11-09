@@ -1,9 +1,24 @@
 import streamlit as st
 
+cgu_logo = "https://pbs.twimg.com/profile_images/1299210897450323973/ge3Q9xtG_400x400.jpg"
 url = "https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/null/external-mind-map-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.write(' ')
+with col2:
+    st.image(cgu_logo, width=200)
+with col3:
+    st.write(' ')
+
+st.info(
+    "### Made By [Rishav Nandi](https://github.com/rishavnandi/streamlit_kmap_solver)")
+st.info(
+    " ##### Registration Number: 2101020326 | Roll Number: CAM21016 | Group Number: 3")
+
 with st.sidebar:
-    st.image(url)
-    st.title('Kmap Solver')
+    st.image(url, width=100)
+    st.title('Streamlit Kmap Solver')
     mimastr = st.selectbox("SOP or POS", ("SOP", "POS"))
     mt = st.text_input("Enter Minterms or Maxterms separated by single space")
     mt = list(map(int, mt.split()))
@@ -44,7 +59,7 @@ def inp3_k_map(mt, nip):
                 ansg[i][j] = 1
     for i in range(2):
         (ansg[i][2], ansg[i][3]) = (ansg[i][3], ansg[i][2])
-    st.title("Kmap Plotted")
+    st.write("## Kmap Plotted")
     if nip == 1:
         for each in ansg:
             st.write(*each)
@@ -155,12 +170,14 @@ def inp3_k_map(mt, nip):
     op = op.replace("A", var_re[0])
     op = op.replace("B", var_re[1])
     op = op.replace("C", var_re[2])
-    st.title("The simplified equation is")
-    st.write(op)
+    st.write("## The simplified equation is")
+    st.success("##### "+op)
 
 
-if st.button("Simplify"):
-    if mimastr == "SOP":
-        inp3_k_map(mt, 1)
-    elif mimastr == "POS":
-        inp3_k_map(mt, 2)
+if mimastr == "SOP":
+    mima = 1
+else:
+    mima = 2
+
+if st.sidebar.button("Simplify"):
+    inp3_k_map(mt, mima)
