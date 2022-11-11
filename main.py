@@ -1,7 +1,7 @@
 import streamlit as st
 
 cgu_logo = "https://pbs.twimg.com/profile_images/1299210897450323973/ge3Q9xtG_400x400.jpg"
-url = "https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/200/null/external-mind-map-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"
+url = "https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/256/null/external-mind-map-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -17,7 +17,7 @@ st.info(
     " ##### Registration Number: 2101020326 | Roll Number: CAM21016 | Group Number: 3")
 
 with st.sidebar:
-    st.image(url, width=100)
+    st.image(url)
     st.title('Streamlit Kmap Solver')
     mimastr = st.selectbox("SOP or POS", ("SOP", "POS"))
     mt = st.text_input("Enter Minterms or Maxterms separated by single space")
